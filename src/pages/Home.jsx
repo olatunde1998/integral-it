@@ -23,7 +23,7 @@ const Home = () => {
             style={{
               textAlign: "center",
               marginBottom: "50px",
-              marginTop:"160px",
+              marginTop:"250px",
               fontWeight: "600",
             }}
           >

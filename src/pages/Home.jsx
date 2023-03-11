@@ -8,16 +8,33 @@ import { Typography } from "@mui/material";
 import ChairAltOutlinedIcon from "@mui/icons-material/ChairAltOutlined";
 import SignalCellularAltOutlinedIcon from "@mui/icons-material/SignalCellularAltOutlined";
 import CollectionsBookmarkOutlinedIcon from "@mui/icons-material/CollectionsBookmarkOutlined";
+import { motion } from "framer-motion";
 
+
+const homeVariants = {
+  hidden:{
+    opacity: 0,
+    x: '100vw'
+  },
+  visible:{
+    opacity:1,
+    x: 0,
+    transition:{type:'spring', duration: 3, delay: 0.5}
+  },
+  exit:{
+    y:'100vw',
+    transition:{ease: 'easeInOut', duration: 3}
+  }
+}
 
 const Home = () => {
   return (
-    <div>
-      <div >
+    <motion.div variants={homeVariants} initial='hidden' animate='visible' exit='exit'>
+      <motion.div initial={{x:'100vw'}} animate={{x: 0}} transition={{type:'spring',duration:3, delay:3}} >
       <Slider />
-      </div>
+      </motion.div>
       <Container>
-        <div style={{ marginTop: "70px" }}>
+        <motion.div initial={{x:'-100vw'}} animate={{x: 0}} transition={{type:'spring',duration:5, delay:3}} style={{ marginTop: "70px" }}>
           <Typography
             variant="h5"
             style={{
@@ -76,8 +93,8 @@ const Home = () => {
               />
             </Grid>
           </Grid>
-        </div>
-        <div style={{ marginTop: "70px" }}>
+        </motion.div>
+        <motion.div initial={{x:'100vw'}} animate={{x: 0}} transition={{type:'spring',duration:5, delay:5, yoyo: Infinity}} style={{ marginTop: "70px" }}>
           <Typography
             variant="h5"
             style={{
@@ -120,9 +137,9 @@ const Home = () => {
               />
             </Grid>
           </Grid>
-        </div>
+        </motion.div>
       </Container>
-    </div>
+    </motion.div>
   );
 };
 

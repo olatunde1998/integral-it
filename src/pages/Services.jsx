@@ -5,10 +5,27 @@ import PageTitle from "components/pageTitle/PageTitle";
 import GetStarted from "components/servicesComponent /GetStarted";
 import ServicesBody from "components/servicesComponent /ServicesBody";
 import ServicesHero from "components/servicesComponent /ServicesHero";
+import { motion } from "framer-motion";
+
+const servicesVariants = {
+  hidden:{
+    opacity: 0,
+    x: '100vw'
+  },
+  visible:{
+    opacity:1,
+    x: 0,
+    transition:{type:'spring', duration: 3, delay: 0.5}
+  },
+  exit:{
+    y:'100vw',
+    transition:{ease: 'easeInOut', duration: 3}
+  }
+}
 
 const Expertise = () => {
   return (
-    <div>
+    <motion.div variants={servicesVariants} initial='hidden' animate='visible' exit='exit'>
       <PageTitle currentPage="Services" />
       <Container>
         <ServicesHero />
@@ -27,7 +44,7 @@ const Expertise = () => {
           detailsOne="We'd love to find out more about you, your business, and your current projects. One of our team members will get back to you shortly and set up a call to discuss your needs further. Work with us"
         />
       </Container>
-    </div>
+    </motion.div>
   );
 };
 

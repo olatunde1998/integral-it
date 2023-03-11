@@ -7,11 +7,28 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import WifiCalling3OutlinedIcon from '@mui/icons-material/WifiCalling3Outlined';
 import PageTitle from "components/pageTitle/PageTitle";
+import { motion } from "framer-motion";
 
+
+const contactVariants = {
+  hidden:{
+    opacity: 0,
+    x: '100vw'
+  },
+  visible:{
+    opacity:1,
+    x: 0,
+    transition:{type:'spring', duration: 3, delay: 0.5}
+  },
+  exit:{
+    y:'100vw',
+    transition:{ease: 'easeInOut', duration: 3}
+  }
+}
 
 const Contact = () => {
   return (
-    <div>
+    <motion.div variants={contactVariants} initial='hidden' animate='visible' exit='exit'>
       <PageTitle currentPage="Contact"/>
       <Container>
         <Grid container spacing={3} style={{ marginTop: "40px" }}>
@@ -70,7 +87,7 @@ const Contact = () => {
           </Grid>
         </Grid>
       </Container>
-    </div>
+    </motion.div>
   );
 };
 

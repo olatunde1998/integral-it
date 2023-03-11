@@ -2,10 +2,27 @@ import Container from "@material-ui/core/Container";
 import ExpertiseBody from "components/expertiseComponent/ExpertiseBody";
 import ExpertiseHero from "components/expertiseComponent/ExpertiseHero";
 import PageTitle from "components/pageTitle/PageTitle";
+import { motion } from "framer-motion";
+
+const expertiseVariants = {
+  hidden:{
+    opacity: 0,
+    x: '100vw'
+  },
+  visible:{
+    opacity:1,
+    x: 0,
+    transition:{type:'spring', duration: 3, delay: 0.5}
+  },
+  exit:{
+    y:'100vw',
+    transition:{ease: 'easeInOut', duration: 3}
+  }
+}
 
 const Expertise = () => {
   return (
-    <div>
+    <motion.div variants={expertiseVariants} initial='hidden' animate='visible' exit='exit'>
       <PageTitle currentPage="Expertise" />
       <Container>
         <ExpertiseHero />
@@ -27,7 +44,7 @@ const Expertise = () => {
           detailsThree="Integral iT will develop a platform that not only gives your employees the applications, tools, and documents they need to effectively do their jobs in personalised dashboards, but also monitors the work they do and applications they do in their company issued PCs with time tracking and periodic screenshots. Comprehensive daily reports are sent to Admin/HR."
         />
       </Container>
-    </div>
+    </motion.div>
   );
 };
 

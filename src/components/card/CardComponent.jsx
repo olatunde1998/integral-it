@@ -17,7 +17,8 @@ const useStyles = makeStyles({
 const CardComponent = ({ heading, detail, icon }) => {
   const classnames = useStyles();
   return (
-    <Card className={classnames.cardBgColor}>
+    <Card
+    className={classnames.cardBgColor}>
       <CardActionArea
         sx={{ boxShadow: "0px 2px 15px rgb(0 0 0 / 15%)", height: "250px" }}
       >
